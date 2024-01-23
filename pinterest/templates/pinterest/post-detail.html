@@ -1,0 +1,22 @@
+{% extends '../base.html' %}
+
+{% block title %}
+    Post
+{% endblock title %}
+
+{% block content %}
+
+    <img src="{{ post.cover.urls }}" alt="">
+    <h1>{{ post.name }}</h1>
+    <h2>{{ post.description }}</h2>
+    <h2> Author: {{ post.author }}</h2>
+    <h2>Released: {{ post.released_date }}</h2>
+
+    {% if request.user == post.author %}
+        <a href="{% url 'post_update' post.pk %}">Update</a>
+        <a href="{% url 'post_delete' post.pk %}">Delete</a>
+    {% endif %}
+
+    
+
+{% endblock content %}
